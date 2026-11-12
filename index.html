@@ -424,11 +424,11 @@ function roundMirror(x, y, z, r, ry) {  // ry: direction the mirror faces (0 = +
 }
 function curtains(at, a, b) {  // on a wall running along z
   for (const [c0, c1] of [[a - 1.5, a + 0.15], [b - 0.15, b + 1.5]]) {
-    const g = new THREE.PlaneGeometry(c1 - c0, 8, 40, 1), p = g.attributes.position;
+    const g = new THREE.PlaneGeometry(c1 - c0, 9.24, 40, 1), p = g.attributes.position;
     for (let i = 0; i < p.count; i++) p.setZ(i, Math.sin(p.getX(i) * 13) * 0.085 + Math.sin(p.getX(i) * 29) * 0.02);
-    g.computeVertexNormals(); const m = new THREE.Mesh(g, MT.linen); m.rotation.y = PI / 2; m.position.set(at, 4.15, (c0 + c1) / 2); m.castShadow = true; m.receiveShadow = true; house.add(m);
+    g.computeVertexNormals(); const m = new THREE.Mesh(g, MT.linen); m.rotation.y = PI / 2; m.position.set(at, 4.67, (c0 + c1) / 2); m.castShadow = true; m.receiveShadow = true; house.add(m);
   }
-  B(at - 0.035, at + 0.035, 8.15, 8.22, a - 1.7, b + 1.7, MT.metal, {cast: false}); ball(at, 8.185, a - 1.7, 0.09, MT.metal, {cast: false}); ball(at, 8.185, b + 1.7, 0.09, MT.metal, {cast: false});
+  B(at - 0.14, at + 0.14, 9.2, 9.3, a - 1.7, b + 1.7, MT.metal, {cast: false});
 }
 function tv(axis, at, dir, c, w, y = 3.6) {
   const mk = (u1, u2, y1, y2, d1, d2, m) => axis === 'x' ? B(u1, u2, y1, y2, d1, d2, m) : B(d1, d2, y1, y2, u1, u2, m);
@@ -464,13 +464,14 @@ function nightstand(x, z, o = {}) {
   tableLamp(x - 0.15, 1.83, z - 0.1, 0.9); if (o.books !== false) books(x + 0.3, 1.83, z + 0.4, 2, 0.55, 0.4);
 }
 function wardrobe(x1, z1, x2, z2, face) {
-  B(x1, x2, 0, 7.5, z1, z2, MT.woodV);
+  const TOP = H - 0.01; B(x1, x2, 0, TOP, z1, z2, MT.woodV);
   const alongX = face[0] === 'z', len = alongX ? x2 - x1 : z2 - z1, n = Math.max(2, Math.round(len / 2)), e = 0.015;
   for (let i = 0; i <= n; i++) {
     const u = (alongX ? x1 : z1) + len * i / n, hu = u + len / n - 0.22;
-    if (alongX) { const zf = face === 'z-' ? z1 : z2; B(Math.max(x1, u - 0.02), Math.min(x2, u + 0.02), 0.25, 7.45, zf - e, zf + e, MT.woodD, {cast: false}); if (i < n) B(i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, 2.4, 5, zf - 0.09, zf + 0.09, MT.metal, {cast: false}); }
-    else { const xf = face === 'x-' ? x1 : x2; B(xf - e, xf + e, 0.25, 7.45, Math.max(z1, u - 0.02), Math.min(z2, u + 0.02), MT.woodD, {cast: false}); if (i < n) B(xf - 0.09, xf + 0.09, 2.4, 5, i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, MT.metal, {cast: false}); }
+    if (alongX) { const zf = face === 'z-' ? z1 : z2; B(Math.max(x1, u - 0.02), Math.min(x2, u + 0.02), 0.25, TOP, zf - e, zf + e, MT.woodD, {cast: false}); if (i < n) { B(i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, 2.4, 5, zf - 0.09, zf + 0.09, MT.metal, {cast: false}); B(i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, 7.75, 8.35, zf - 0.09, zf + 0.09, MT.metal, {cast: false}); } }
+    else { const xf = face === 'x-' ? x1 : x2; B(xf - e, xf + e, 0.25, TOP, Math.max(z1, u - 0.02), Math.min(z2, u + 0.02), MT.woodD, {cast: false}); if (i < n) { B(xf - 0.09, xf + 0.09, 2.4, 5, i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, MT.metal, {cast: false}); B(xf - 0.09, xf + 0.09, 7.75, 8.35, i % 2 ? u + 0.14 : hu, i % 2 ? u + 0.2 : hu + 0.06, MT.metal, {cast: false}); } }
   }
+  if (alongX) { const zf = face === 'z-' ? z1 : z2; B(x1, x2, 7.48, 7.52, zf - e, zf + e, MT.woodD, {cast: false}); } else { const xf = face === 'x-' ? x1 : x2; B(xf - e, xf + e, 7.48, 7.52, z1, z2, MT.woodD, {cast: false}); }
   solid(x1, z1, x2, z2);
 }
 function diningChair(x, z, rot) {
