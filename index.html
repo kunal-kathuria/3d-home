@@ -811,12 +811,13 @@ B(4.75, 7.25, 0.02, 0.05, 19.75, 23.75, M(0x8f897d, 0.5), {cast: false}); B(5.85
 B(7.22, 7.28, 0, 6.8, 19.75, 22.05, mGlassS, {cast: false}); B(7.2, 7.3, 6.8, 6.88, 19.75, 22.05, MT.metal, {cast: false}); B(7.2, 7.3, 0, 6.88, 22.0, 22.06, MT.metal, {cast: false}); solid(7.2, 19.75, 7.3, 22.05);
 B(4.75, 5.75, 6.86, 6.94, 21.71, 21.79, MT.metal, {cast: false}); cyl(5.75, 6.74, 6.86, 21.75, 0.4, 0.4, MT.metal, {cast: false}); cyl(6.2, 3.6, 3.9, 19.87, 0.11, 0.11, MT.metal, {cast: false}).rotation.x = PI / 2;
 B(5.1, 6.7, 3.3, 4.5, 19.75, 19.79, MT.counter, {cast: false}); B(5.1, 6.7, 3.3, 3.35, 19.75, 20.05, MT.counter, {cast: false}); [5.4, 5.75, 6.1].forEach((u, i) => lathe(u, 3.35, 19.92, scalePts(BOTTLE, 0.45, 0.45 + i * 0.1), i === 1 ? MT.vase : mCeramic, {cast: false}));
-// wall-hung WC on the long west wall, facing the door wall, with a concealed cistern behind a tiled ledge
-at(8.55, 19.75, 0, () => { B(-1.25, 2.03, 0, 3.7, 0, 0.5, MT.wtile); B(-1.25, 2.03, 3.7, 3.78, 0, 0.56, MT.counter); B(-0.32, 0.32, 2.85, 3.25, 0.5, 0.53, mChrome, {cast: false});
+// wall-hung WC on the north end wall, facing south, right beside the basin; concealed cistern behind a tiled ledge
+at(10.583, 21.0, -PI / 2, () => { B(-1.25, 1.25, 0, 3.7, 0, 0.5, MT.wtile); B(-1.25, 1.25, 3.7, 3.78, 0, 0.56, MT.counter); B(-0.32, 0.32, 2.85, 3.25, 0.5, 0.53, mChrome, {cast: false});
   const b = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.4, 0.85, 28), mCeramic); b.scale.z = 1.25; b.position.set(0, 0.95, 1.2); b.castShadow = true; PARENT.add(b);
   const st = new THREE.Mesh(new THREE.CylinderGeometry(0.63, 0.61, 0.09, 28), mCeramic); st.scale.z = 1.25; st.position.set(0, 1.42, 1.2); PARENT.add(st);
-  snake(1.6, 3.78, 0.28, 0.4); lathe(-0.9, 3.78, 0.28, scalePts(BOTTLE, 0.4), MT.vase, {cast: false}); candle(1.15, 3.78, 0.3, 0.35); });
-solid(7.9, 20.2, 9.2, 22.0); solid(7.3, 19.75, 10.583, 20.3);
+  snake(-0.9, 3.78, 0.28, 0.4); candle(0.85, 3.78, 0.3, 0.35); });
+solid(8.65, 20.2, 10.583, 21.8); solid(10.05, 19.75, 10.583, 22.25);
+towelRail(7.7, 4.6, 19.82, 'x', 1.7);
 // compact wall-hung basin and mirror on the north wall, beside the door
 at(10.583, 22.9, -PI / 2, () => { B(-0.62, 0.62, 2.35, 2.52, 0, 0.92, MT.counter, {r: 0.02}); lathe(0, 2.52, 0.48, scalePts(BOWL, 0.62, 0.9), mCeramic); cyl(0, 2.52, 3.2, 0.14, 0.03, 0.03, MT.metal); B(-0.03, 0.03, 3.16, 3.21, 0.14, 0.44, MT.metal, {cast: false});
   B(-0.66, 0.66, 3.5, 6.1, 0, 0.03, mLED, {cast: false}); B(-0.58, 0.58, 3.58, 6.02, 0.03, 0.07, mMirror, {cast: false}); B(-0.5, 0.5, 1.9, 1.95, 0.1, 0.2, mChrome, {cast: false}); B(-0.45, 0.45, 1.2, 1.97, 0.12, 0.26, MT.towel, {r: 0.04}); });
