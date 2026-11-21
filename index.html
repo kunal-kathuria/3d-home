@@ -392,7 +392,7 @@ wall('x', 20.125, 0.375, 13.875, 25.458, MT.accP, mWall, [door(14.1, 17.1)]);
 wall('z', 4.5, 0.25, 19.75, 23.75, mExt, mTile, [vent(21, 22.5)]);
 wall('z', 10.583, 0.25, 19.75, 23.75, mTile, mWall);
 wall('x', 23.75, 0.375, 1.5, 4.75, mExt, MT.wallG);
-wall('x', 23.75, 0.375, 4.75, 10.833, mTile, MT.wallG, [door(5.7, 8.2)]);
+wall('x', 23.75, 0.375, 4.75, 10.833, mTile, MT.wallG, [door(7.9, 10.4)]);
 wall('x', 23.75, 0.375, 10.833, 13.875, mWall, MT.wallG);
 wall('z', 13.5, 0.375, 24.125, 35.5, MT.wallG, mWall, [door(24.3, 27.3)]);
 wall('x', 35.125, 0.375, 1.5, 13.5, MT.wallG, MT.accD);
@@ -405,7 +405,7 @@ leaf(14.1, 7.375, 3, 0.12, 1);
 leaf(13.5, 24.3, 3, -1, 0.05);
 leaf(5.5, 7, 2.5, -0.05, -1);
 leaf(19.6, 7, 2.5, -0.05, -1);
-leaf(5.7, 24.125, 2.5, 0.04, 1);
+leaf(7.9, 24.125, 2.5, 0.04, 1);
 
 /* ================= floors ================= */
 B(-400, 400, -1, -0.09, -400, 400, TM(tGrass, 1), {cast: false});
@@ -781,7 +781,7 @@ for (const x of [17.45, 25.3]) B(x, x + 0.07, 0.3, 9.2, 20.05, 20.125, mLED, {ca
 sconce(18.2, 5.4, 20.02, 'z'); sconce(24.68, 5.4, 20.02, 'z'); chandelier(20.6, 15.0, 7.5, 0.95);
 // guest bedroom (south) 12 x 11: head to the south, wardrobe on the west wall
 rug(2.3, 26.4, 11.35, 34.9, MT.rugG);
-wardrobe(1.5, 24.125, 5.5, 26.125, 'z+'); wardrobe(8.4, 24.125, 10.4, 26.125, 'z+');
+wardrobe(1.5, 24.125, 7.7, 26.125, 'z+');
 bed(1.5, 30.6, 0, 6.9, 5.2, {head: MT.headG, duv: MT.duvG, th: MT.thG, span: 8.5, bench: true}); solid(1.5, 27.8, 8.6, 33.4); solid(8.6, 28.6, 10, 32.6);
 nightstand(2.5, 27.15, {books: false}); nightstand(2.5, 34.05, {books: false});
 tv('z', 13.5, -1, 30.6, 3.4, 3.4); mediaUnit('z', 13.5, -1, 29.05, 32.15, 1.0); solid(12.5, 29.05, 13.5, 32.15); snake(13.0, 1.85, 29.4, 0.5);
@@ -805,21 +805,24 @@ at(23.2, 7.0, PI, () => vanity(-0.88, 0.88, 0, 1.5, {body: M(0xf3f1ec, 0.4), rop
 B(20.9, 23.9, 0.02, 0.09, 2.9, 4.7, MT.linen, {cast: false, r: 0.03}); B(22.9, 23.9, 3.3, 3.36, 1.05, 1.12, mChrome, {cast: false}); B(23.0, 23.8, 2.1, 3.38, 1.1, 1.24, MT.towel, {r: 0.05});
 palm(21.7, 1.8, 4.6, 0.55, mRattan); palm(23.4, 1.75, 3.2, 0.42, mRattan);
 cyl(21.6, 8.2, H, 4.0, 0.015, 0.015, mBlack, {parent: roof, cast: false, seg: 5}); { const w = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.95, 1.7, 28, 1, true), mWicker); w.position.set(21.6, 7.35, 4.0); w.castShadow = true; roof.add(w); ball(21.6, 7.3, 4.0, 0.22, mGlow(0xffe6b8, 3), {parent: roof, cast: false}); }
-// guest bathroom (opens from the guest bedroom): three-piece wet room in 5'-10" x 4'-0"
-// WC and basin on the south (duct) wall, walk-in shower across the north end, door in the middle of the east wall
-at(4.75, 21.0, PI / 2, () => { B(-1.25, 1.25, 0, 3.7, 0, 0.5, MT.wtile); B(-1.25, 1.25, 3.7, 3.78, 0, 0.56, MT.counter); B(-0.32, 0.32, 2.85, 3.25, 0.5, 0.53, mChrome, {cast: false});
+// guest bathroom (opens from the guest bedroom): compact three-piece wet room in 5'-10" x 4'-0"
+// walk-in shower across the south end, 2'-6" deep, behind a fixed glass panel
+B(4.75, 7.25, 0.02, 0.05, 19.75, 23.75, M(0x8f897d, 0.5), {cast: false}); B(5.85, 6.15, 0.05, 0.06, 21.6, 21.9, mChrome, {cast: false});
+B(7.22, 7.28, 0, 6.8, 19.75, 22.05, mGlassS, {cast: false}); B(7.2, 7.3, 6.8, 6.88, 19.75, 22.05, MT.metal, {cast: false}); B(7.2, 7.3, 0, 6.88, 22.0, 22.06, MT.metal, {cast: false}); solid(7.2, 19.75, 7.3, 22.05);
+B(4.75, 5.75, 6.86, 6.94, 21.71, 21.79, MT.metal, {cast: false}); cyl(5.75, 6.74, 6.86, 21.75, 0.4, 0.4, MT.metal, {cast: false}); cyl(6.2, 3.6, 3.9, 19.87, 0.11, 0.11, MT.metal, {cast: false}).rotation.x = PI / 2;
+B(5.1, 6.7, 3.3, 4.5, 19.75, 19.79, MT.counter, {cast: false}); B(5.1, 6.7, 3.3, 3.35, 19.75, 20.05, MT.counter, {cast: false}); [5.4, 5.75, 6.1].forEach((u, i) => lathe(u, 3.35, 19.92, scalePts(BOTTLE, 0.45, 0.45 + i * 0.1), i === 1 ? MT.vase : mCeramic, {cast: false}));
+// wall-hung WC on the north end wall, facing south, right beside the basin; concealed cistern behind a tiled ledge
+at(10.583, 21.0, -PI / 2, () => { B(-1.25, 1.25, 0, 3.7, 0, 0.5, MT.wtile); B(-1.25, 1.25, 3.7, 3.78, 0, 0.56, MT.counter); B(-0.32, 0.32, 2.85, 3.25, 0.5, 0.53, mChrome, {cast: false});
   const b = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.4, 0.85, 28), mCeramic); b.scale.z = 1.25; b.position.set(0, 0.95, 1.2); b.castShadow = true; PARENT.add(b);
   const st = new THREE.Mesh(new THREE.CylinderGeometry(0.63, 0.61, 0.09, 28), mCeramic); st.scale.z = 1.25; st.position.set(0, 1.42, 1.2); PARENT.add(st);
-  snake(0.9, 3.78, 0.28, 0.4); candle(-0.85, 3.78, 0.3, 0.35); });
-solid(4.75, 20.2, 6.7, 21.8); solid(4.75, 19.75, 5.3, 22.25);
-at(4.75, 22.95, PI / 2, () => { B(-0.6, 0.6, 2.35, 2.52, 0, 0.92, MT.counter, {r: 0.02}); lathe(0, 2.52, 0.48, scalePts(BOWL, 0.62, 0.9), mCeramic); cyl(0, 2.52, 3.2, 0.14, 0.03, 0.03, MT.metal); B(-0.03, 0.03, 3.16, 3.21, 0.14, 0.44, MT.metal, {cast: false});
-  B(-0.64, 0.64, 3.5, 5.9, 0, 0.03, mLED, {cast: false}); B(-0.56, 0.56, 3.58, 5.82, 0.03, 0.07, mMirror, {cast: false}); B(-0.5, 0.5, 1.9, 1.95, 0.1, 0.2, mChrome, {cast: false}); B(-0.45, 0.45, 1.2, 1.97, 0.12, 0.26, MT.towel, {r: 0.04}); });
-solid(4.75, 22.3, 5.72, 23.6);
-B(8.25, 10.583, 0.02, 0.05, 19.75, 23.75, M(0x8f897d, 0.5), {cast: false}); B(9.25, 9.55, 0.05, 0.06, 21.6, 21.9, mChrome, {cast: false});
-B(8.22, 8.28, 0, 6.8, 19.75, 22.05, mGlassS, {cast: false}); B(8.2, 8.3, 6.8, 6.88, 19.75, 22.05, MT.metal, {cast: false}); B(8.2, 8.3, 0, 6.88, 22.0, 22.06, MT.metal, {cast: false}); solid(8.2, 19.75, 8.3, 22.05);
-B(9.6, 10.583, 6.86, 6.94, 21.71, 21.79, MT.metal, {cast: false}); cyl(9.6, 6.74, 6.86, 21.75, 0.4, 0.4, MT.metal, {cast: false}); cyl(9.2, 3.6, 3.9, 19.87, 0.11, 0.11, MT.metal, {cast: false}).rotation.x = PI / 2;
-B(8.7, 10.3, 3.3, 4.5, 19.75, 19.79, MT.counter, {cast: false}); B(8.7, 10.3, 3.3, 3.35, 19.75, 20.05, MT.counter, {cast: false}); [9.6, 9.9, 10.15].forEach((u, i) => lathe(u, 3.35, 19.92, scalePts(BOTTLE, 0.45, 0.45 + i * 0.1), i === 1 ? MT.vase : mCeramic, {cast: false}));
-towelRail(6.3, 4.6, 19.82, 'x', 1.7);
+  snake(-0.9, 3.78, 0.28, 0.4); candle(0.85, 3.78, 0.3, 0.35); });
+solid(8.65, 20.2, 10.583, 21.8); solid(10.05, 19.75, 10.583, 22.25);
+towelRail(7.7, 4.6, 19.82, 'x', 1.7);
+// compact wall-hung basin and mirror on the north wall, beside the door
+at(10.583, 22.9, -PI / 2, () => { B(-0.62, 0.62, 2.35, 2.52, 0, 0.92, MT.counter, {r: 0.02}); lathe(0, 2.52, 0.48, scalePts(BOWL, 0.62, 0.9), mCeramic); cyl(0, 2.52, 3.2, 0.14, 0.03, 0.03, MT.metal); B(-0.03, 0.03, 3.16, 3.21, 0.14, 0.44, MT.metal, {cast: false});
+  B(-0.66, 0.66, 3.5, 6.1, 0, 0.03, mLED, {cast: false}); B(-0.58, 0.58, 3.58, 6.02, 0.03, 0.07, mMirror, {cast: false}); B(-0.5, 0.5, 1.9, 1.95, 0.1, 0.2, mChrome, {cast: false}); B(-0.45, 0.45, 1.2, 1.97, 0.12, 0.26, MT.towel, {r: 0.04}); });
+solid(9.62, 22.25, 10.583, 23.55);
+
 // open-to-sky court: laundry
 { const wm = M(0xc6c8ca, 0.3, {metalness: 0.55});
   B(10.15, 12.4, 0.06, 2.85, 1.0, 3.1, wm, {r: 0.06}); B(10.3, 12.25, 2.42, 2.74, 3.1, 3.115, mBlack, {cast: false}); cyl(11.9, 2.52, 2.64, 3.13, 0.07, 0.07, mChrome, {cast: false}).rotation.x = PI / 2;
