@@ -405,7 +405,9 @@ leaf(14.1, 7.375, 3, 0.12, 1);
 leaf(13.5, 24.3, 3, -1, 0.05);
 leaf(5.5, 7, 2.5, -0.05, -1);
 leaf(19.6, 7, 2.5, -0.05, -1);
-leaf(10.4, 24.125, 2.5, -0.04, 1);
+// guest bathroom: sliding door on a top rail, shown open
+B(5.35, 7.85, 0.05, 6.95, 24.17, 24.28, MT.door); for (const y of [0.7, 3.75]) { B(5.8, 7.4, y, y + 2.6, 24.275, 24.295, MT.woodDV, {cast: false}); B(5.9, 7.3, y + 0.1, y + 2.5, 24.29, 24.3, MT.door, {cast: false}); }
+B(7.55, 7.63, 3.0, 4.0, 24.28, 24.36, MT.metal, {cast: false}); B(5.2, 10.5, 7.02, 7.14, 24.15, 24.3, mBlack, {cast: false}); for (const x of [5.9, 7.3]) cyl(x, 6.95, 7.2, 24.22, 0.07, 0.07, mBlack, {cast: false}).rotation.x = PI / 2;
 
 /* ================= floors ================= */
 B(-400, 400, -1, -0.09, -400, 400, TM(tGrass, 1), {cast: false});
@@ -797,13 +799,15 @@ wc(9.5, 1.9, -PI / 2); solid(7.35, 1.15, 9.5, 2.65);
 at(9.5, 5.55, -PI / 2, () => vanity(-1.15, 1.15, 0, 1.6, {top: mDarkStone, flower: 0xd9822b})); solid(7.85, 4.35, 9.5, 6.75);
 towelRail(5.1, 4.6, 1.07, 'x', 1.8); B(4.9, 7.2, 0.02, 0.07, 3.0, 4.6, MT.thM, {cast: false, r: 0.02});
 B(4.6, 9.4, 0.3, 0.38, 1.02, 1.08, mLED, {cast: false}); candle(5.0, 0.02, 6.5, 0.5); candle(5.3, 0.02, 6.65, 0.35);
-// Mom & Dad's bathroom (north-west strip): blue fish-scale feature wall, rope mirror, wicker pendant, plants in baskets
-B(18.67, 26.67, 0, H, 1.0, 1.05, mScale, {cast: false});
-shower(24.2, 26.67, 1.05, 7, 26.67, 24.2); solid(24.15, 1, 24.25, 4.8);
-wc(18.67, 1.9, PI / 2); solid(18.67, 1.15, 20.85, 2.65);
-at(23.2, 7.0, PI, () => vanity(-0.88, 0.88, 0, 1.5, {body: M(0xf3f1ec, 0.4), rope: true, flower: 0xffffff})); solid(22.3, 5.5, 24.1, 7);
-B(20.9, 23.9, 0.02, 0.09, 2.9, 4.7, MT.linen, {cast: false, r: 0.03}); B(22.9, 23.9, 3.3, 3.36, 1.05, 1.12, mChrome, {cast: false}); B(23.0, 23.8, 2.1, 3.38, 1.1, 1.24, MT.towel, {r: 0.05});
-palm(21.7, 1.8, 4.6, 0.55, mRattan); palm(23.4, 1.75, 3.2, 0.42, mRattan);
+// Mom & Dad's bathroom (north-west strip): vanity facing the door, WC beside the door, shower at the north end with the feature wall behind it
+B(26.6, 26.67, 0, H, 1.0, 7.0, mScale, {cast: false});
+B(24.17, 24.23, 0, 6.8, 3.2, 7, mGlassS, {cast: false}); B(24.16, 24.24, 6.8, 6.9, 3.2, 7, MT.metal, {cast: false}); solid(24.15, 3.2, 24.25, 7);
+cyl(25.4, 6.9, H, 4, 0.04, 0.04, MT.metal, {cast: false}); cyl(25.4, 6.78, 6.9, 4, 0.5, 0.5, MT.metal, {cast: false}); cyl(25.6, 3.6, 3.9, 1.12, 0.12, 0.12, MT.metal, {cast: false}).rotation.x = PI / 2;
+B(24.8, 26.1, 3.2, 4.5, 0.99, 1.03, MT.counter, {cast: false}); B(24.75, 26.15, 3.2, 3.25, 1, 1.32, MT.counter, {cast: false}); [25.1, 25.45, 25.8].forEach((u, i) => lathe(u, 3.25, 1.16, scalePts(BOTTLE, 0.5, 0.5 + i * 0.12), i === 1 ? MT.vase : mCeramic, {cast: false}));
+wc(23.2, 7.0, PI); solid(22.45, 4.8, 23.95, 7);
+at(21.4, 1.0, 0, () => vanity(-1.2, 1.2, 0, 1.5, {body: M(0xf3f1ec, 0.4), rope: true, flower: 0xffffff})); solid(20.2, 1, 22.6, 2.6);
+B(20.3, 23.3, 0.02, 0.09, 2.8, 4.3, MT.linen, {cast: false, r: 0.03});
+palm(19.3, 1.75, 3.4, 0.42, mRattan); solid(18.85, 1.3, 19.75, 2.2);
 cyl(21.6, 8.2, H, 4.0, 0.015, 0.015, mBlack, {parent: roof, cast: false, seg: 5}); { const w = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.95, 1.7, 28, 1, true), mWicker); w.position.set(21.6, 7.35, 4.0); w.castShadow = true; roof.add(w); ball(21.6, 7.3, 4.0, 0.22, mGlow(0xffe6b8, 3), {parent: roof, cast: false}); }
 // guest bathroom (opens from the guest bedroom): compact three-piece wet room in 5'-10" x 4'-0"
 // walk-in shower across the south end, 2'-6" deep, behind a fixed glass panel
