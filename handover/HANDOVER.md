@@ -7,7 +7,7 @@ Paste the "Message for the local session" block below into a local Claude sessio
 - **Project:** interiors for a ground-floor 3-bedroom house (28' × 67' plot). There is a Three.js walkthrough (`index.html`) and a set of photoreal room images.
 - **Primary bathroom (Mom & Dad's): locked.** Final image: `images/primary-bath-locked.jpg`. Layout: `images/primary-bath-plan-9x6.png` (9'-0" × 6'-0").
   - Navy picket feature wall at the shower end, white marble-look walls, terrazzo floor meeting plain warm-white tile on a curved brass inlay, brushed brass fittings, oval backlit mirror.
-- **Guest bathroom: in progress.** Layout: `images/guest-bath-plan-v2.png` (5'-10" × 4'-0").
+- **Guest bathroom: in progress.** Layout: `images/guest-bath-plan-6x6.png` (6'-0" × 6'-0", to scale).
   - Shower 2'-6" deep across the duct end behind a fixed glass panel; WC and a small basin side by side on the opposite end wall; sliding door from the guest bedroom next to the basin.
   - Style direction: botanical mural tile on the upper walls, fluted panelling on the lower walls up to the 3'-8" WC ledge, small hexagon mosaic floor. Inspiration: `images/guest-inspo-style.jpg`.
   - Option 1 (Forest Crema mural) has been generated once in Canva, view toward the WC and basin: https://www.canva.com/M/MAHb1O33VKc
@@ -25,7 +25,7 @@ Paste the "Message for the local session" block below into a local Claude sessio
 
 | File | Use |
 |---|---|
-| `guest-bath-plan-v2.png` | Guest bath layout plan |
+| `guest-bath-plan-6x6.png` | Guest bath layout plan |
 | `guest-inspo-style.jpg` | Style idea only (mural + fluted + mosaic) |
 | `guest-tile-forest-crema.jpg` | Option 1 mural tile (ICON Forest Crema Decor, 60×120 cm matt) |
 | `guest-tile-essence-crema.jpg` | Plain cream wall tile (ICON Essence Crema) |
@@ -52,15 +52,15 @@ Prompts are in handover/HANDOVER.md under "Prompts".
 
 ### Base prompt (option 1, Forest Crema, view toward WC and basin)
 
-Attach in order: `guest-bath-plan-v2.png`, `guest-inspo-style.jpg`, `guest-tile-forest-crema.jpg`, `guest-tile-essence-crema.jpg`.
+Attach in order: `guest-bath-plan-6x6.png`, `guest-inspo-style.jpg`, `guest-tile-forest-crema.jpg`, `guest-tile-essence-crema.jpg`.
 
 ```
-Photorealistic interior photograph of a compact luxury guest bathroom, 5 ft 10 in long × 4 ft wide, 10 ft ceiling. Follow the floor plan in image 1 exactly. Use image 2 only for the design idea: botanical mural on the upper walls, fluted panelling on the lower walls, mosaic floor. Do not copy its dark colours or its layout.
+Photorealistic interior photograph of a compact luxury guest bathroom, 6 ft long × 6 ft wide, 10 ft ceiling. Follow the floor plan in image 1 exactly. Use image 2 only for the design idea: botanical mural on the upper walls, fluted panelling on the lower walls, mosaic floor. Do not copy its dark colours or its layout.
 
 Camera: standing inside the shower at the far end with your back to the end wall, eye level 5 ft, 14mm wide lens, looking straight down the length of the room at the opposite end wall.
 
 Layout, as seen from the camera:
-- FAR END wall: on the left half, a white wall-hung WC facing the camera, with a ledge 3 ft 8 in high behind it hiding the cistern and a brushed brass flush plate. On the right half, beside the WC, a small floating basin unit 15 in wide with a white bowl, a wall-mounted brass tap and a tall oval backlit mirror above.
+- FAR END wall: on the left half, a white wall-hung WC facing the camera, with a ledge 3 ft 8 in high behind it hiding the cistern and a brushed brass flush plate. On the right half, beside the WC, a small floating basin unit 24 in wide with a white bowl, a wall-mounted brass tap and a tall oval backlit mirror above.
 - RIGHT wall: the doorway from the bedroom next to the basin, with a sliding door slid open.
 - LEFT wall: no fixtures, one brass towel rail.
 - NEAR FOREGROUND: the edge of a fixed clear frameless glass shower panel on the left.
@@ -96,7 +96,7 @@ Replace the Camera and Layout paragraphs with:
 Camera: standing with your back against the end wall where the WC and basin are, eye level 5 ft, 14mm wide lens, looking straight down the length of the room at the shower end wall.
 
 Layout, as seen from the camera:
-- FAR END: a walk-in shower 2 ft 6 in deep across the full 4 ft width. One fixed clear frameless glass panel on the right half, open walk-in gap on the left half. Brass rain shower head, brass hand shower, recessed lit niche on the right side wall inside the shower.
+- FAR END: a walk-in shower 2 ft 6 in deep across the full 6 ft width. One fixed clear frameless glass panel 3 ft 6 in wide on the right, open walk-in gap 2 ft 6 in wide on the left. Brass rain shower head, brass hand shower, recessed lit niche on the right side wall inside the shower.
 - LEFT wall: the doorway from the bedroom with a sliding door, slid open. Nothing else on this wall.
 - RIGHT wall: the mural above the fluted lower wall, one brass towel rail.
 - NEAR FOREGROUND, bottom edge of frame: the front edge of the white wall-hung WC on the right and the corner of the small floating basin on the left.
